@@ -1,0 +1,18 @@
+{
+    "folders": [
+        {
+            "path": ".."
+        }
+    ],
+    "settings": {
+        "files.associations": {
+            "iostream": "cpp",
+            "ostream": "cpp",
+            "cmath": "cpp",
+            "random": "cpp",
+            "ratio": "cpp",
+            "valarray": "cpp",
+            "vector": "cpp"
+        }
+    }
+}
