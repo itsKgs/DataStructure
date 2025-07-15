@@ -1,12 +1,7 @@
 // User function Template for C++
 #include <iostream>
+#include <vector>
 using namespace std;
-
-int main(){
-    
-
-    return 0;
-}
 
 struct Node{
     
@@ -58,7 +53,6 @@ class Trie{
         
         bool checkIfPrefixExists(string word){
             
-            bool f1 = true;
             Node* node = root;
             
             for(int i = 0; i < word.length(); i++){
@@ -76,33 +70,44 @@ class Trie{
         
 };
 
-class Solution {
+//class Solution {
+//    
+//    public:
+//
+//    
+//};
+
+string longestString(vector<string> &words) {
+    // code here
+    Trie trie;
     
-    public:
-        string longestString(vector<string> &words) {
-            // code here
-            Trie trie;
-            
-            for(auto &it: words){
-                trie.insert(it);
+    for(auto &it: words){
+        trie.insert(it);
+    }
+    
+    string longest = "";
+    
+    for(auto &it: words){
+        if(trie.checkIfPrefixExists(it)){
+            if(it.length() > longest.length()){
+                longest = it;
             }
-            
-            string longest = "";
-            
-            for(auto &it: words){
-                if(trie.checkIfPrefixExists(it)){
-                    if(it.length() > longest.length()){
-                        longest = it;
-                    }
-                    else if(it.length() == longest.length() && it < longest /*(lexically small)*/){
-                        longest = it;
-                    }
-                }
+            else if(it.length() == longest.length() && it < longest /*(lexically small)*/){
+                longest = it;
             }
-            
-            if (longest == "") return "";
-            return longest;
-            
         }
+    }
     
-};
+    if (longest == "") return "";
+    return longest;
+    
+}
+
+int main(){
+    
+    vector<string> s{"p", "pr", "pro", "probl", "problem", "pros", "process"};
+
+    cout<<longestString(s)<<endl;
+
+    return 0;
+}
